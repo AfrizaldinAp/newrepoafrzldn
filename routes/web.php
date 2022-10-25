@@ -21,7 +21,7 @@ use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
-    return view('admin.Dashboard');
+    return view('home');
 });
 
 // Route::get('/about', function () {
