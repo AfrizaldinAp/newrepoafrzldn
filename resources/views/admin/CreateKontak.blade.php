@@ -1,12 +1,12 @@
 @extends('admin.app')
 @section('title','Create Kontak')
 @section('content-title', 'Create Kontak')
-@section('content',' Create Kontak')
+@section('content')
 <div class="card mb-4">
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <form action="{{ route('kontak.store') }}" method="POST">
+                <form action="{{ route('masterkontak.store') }}" method="POST">
                     @csrf
                     <div class="row">
 
@@ -16,7 +16,7 @@
                                 <select name="id_siswa" class="form-control @error('id_siswa') is-invalid @enderror"
                                     id="id_siswa" aria-label="Default select example">
                                     <option selected value="">Kontak Siswa</option>
-                                    @foreach ($siswa as $s)
+                                    @foreach ($siswas as $s)
                                         <option value="{{ $s->id }}">{{ $s->nama }}</option>
                                     @endforeach
                                 </select>
@@ -33,8 +33,8 @@
                                 <select name="id_jenis" class="form-control @error('id_jenis') is-invalid @enderror"
                                     id="id_jenis" aria-label="Default select example">
                                     <option selected value="">Kontak Berjenis</option>
-                                    @foreach ($jenis as $s)
-                                        <option value="{{ $s->id }}">{{ $s->jenis }}</option>
+                                    @foreach ($kontaks as $s)
+                                        <option value="{{ $s->id }}">{{ $s->jenis_kontak }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_jenis')

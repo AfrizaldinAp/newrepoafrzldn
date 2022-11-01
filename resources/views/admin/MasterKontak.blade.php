@@ -2,10 +2,6 @@
 @section('title','Master Kontak')
 @section('content-title', 'Master Kontak')
 @section('content')
-<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.</p>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -22,19 +18,11 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Kontak Siswa</th>
-                                    <th>Jenis Kontak</th>
-                                    <th>Deskripsi</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 @foreach ($kontak as $index => $item)
                                 <tr>
                             <td>{{ $item->siswa->nama }}</td>
-                            <!-- <td>{{ $item->jeniskontak->jenis }}</td> -->
+                            <td>{{ $item->jeniskontak->jenis_kontak }}</td>
                             <td>{{ $item->deskripsi }}</td>
                             <td>
                                 <a href="{{ route('masterkontak.show', ['masterkontak' => $item->id]) }}" class="btn btn-primary btn-circle btn-sm">

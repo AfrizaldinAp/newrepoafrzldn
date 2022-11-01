@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kontak;
 use App\Models\JenisKontak;
+use App\Models\Siswa;
 
 class KontakController extends Controller
 {
@@ -27,7 +28,9 @@ class KontakController extends Controller
      */
     public function create()
     {
-        return view('admin.CreateKontak');
+        $siswas =  Siswa::all();
+        $kontaks = JenisKontak::all();
+        return view('admin.CreateKontak', compact('siswas', 'kontaks'));
     }
 
     /**
@@ -47,7 +50,7 @@ class KontakController extends Controller
             "deskripsi" => "required",
         ],$message);
         Kontak::create($validated);
-        return redirect()->route('kontak.index');
+        return redirect('/masterkontak');
     }
 
     /**
