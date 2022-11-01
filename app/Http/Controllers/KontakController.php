@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kontak;
+use App\Models\JenisKontak;
 
 class KontakController extends Controller
 {
@@ -13,7 +15,9 @@ class KontakController extends Controller
      */
     public function index()
     {
-        return view('admin.masterkontak');
+        return view('admin.masterkontak', [
+            "kontak" => Kontak::all()
+        ]);
     }
 
     /**
@@ -34,7 +38,16 @@ class KontakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = [
+            'required' => ':attribute harus diisi dulu bang'
+        ];
+        $validated = $request->validate([
+            "id_siswa" => "required",
+            "id_jenis" => "required",
+            "deskripsi" => "required",
+        ],$message);
+        Kontak::create($validated);
+        return redirect()->route('kontak.index');
     }
 
     /**
