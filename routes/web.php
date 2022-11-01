@@ -21,7 +21,7 @@ use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
-    return view('home');
+    return redirect('/login');
 });
 
 // Route::get('/about', function () {
